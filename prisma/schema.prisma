@@ -11,8 +11,8 @@ datasource db {
 }
 
 model Students {
-  id String @id
-  name String
-  email String
-  age Int
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+  age   Int
 }

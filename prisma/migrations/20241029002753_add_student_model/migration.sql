@@ -5,3 +5,6 @@ CREATE TABLE "Students" (
     "email" TEXT NOT NULL,
     "age" INTEGER NOT NULL
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Students_email_key" ON "Students"("email");

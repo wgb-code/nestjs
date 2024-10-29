@@ -11,8 +11,8 @@ export class StudentRepositoryPrismaImpl implements StudentRepository {
         private prismaService: PrismaService
     ) {}
 
-    getAllStudent(): Promise<CreateStudentDTO[]> {
-        throw new Error("Method not implemented.");
+    async getAllStudent(): Promise<CreateStudentDTO[]> {
+        return await this.prismaService.students.findMany()
     }
 
     async createStudent(body: CreateStudentDTO): Promise<any> {
@@ -33,8 +33,13 @@ export class StudentRepositoryPrismaImpl implements StudentRepository {
     updateStudent(id: string, body: any): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    deleteStudent(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+
+    async deleteStudent(id: string): Promise<void> {
+        await this.prismaService.students.delete({
+            where: {
+                id: id
+            }
+        })
     }
 
 }
