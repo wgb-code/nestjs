@@ -21,7 +21,7 @@ export class StudentController {
 
     @Put(':id')
     async updateStudent(@Param('id') id:string, @Body() body: any) {
-        
+        await this.repository.updateStudent(id, body)
     }
 
     @Delete()
